@@ -102,10 +102,10 @@ export function NavBarDrawer({ isOpen, onClose }) {
                 textAlign="center"
                 fontSize={30}
                 fontWeight="extrabold"
-                color="#0056d2"
+                color="#333333"
                 _hover={{ cursor: "pointer" }}
               >
-                LAVISH-LEARNS
+                LAVISH - LEARNS
               </Text>
             </Link>
             <Box>
@@ -120,7 +120,7 @@ export function NavBarDrawer({ isOpen, onClose }) {
                   userStore?.role === "teacher" ? (
                     <Flex alignItems={"center"}>
                       <Box>
-                        <FaUserShield size="2rem" color="#0056d2" />
+                        <FaUserShield size="2rem" color="#333333" />
                         <Text fontSize="0.6rem" fontWeight="bold">
                           {capitalizeFirstLetter(userStore?.role)}
                         </Text>
@@ -131,7 +131,7 @@ export function NavBarDrawer({ isOpen, onClose }) {
                     </Flex>
                   ) : userStore?.role === "user" ? (
                     <Flex alignItems={"center"}>
-                      <BiUserCircle size="2rem" color="#0056d2" />
+                      <BiUserCircle size="2rem" color="#333333" />
                       <Heading size="sm" ml="1rem">
                         {capitalizeFirstLetter(userStore?.name)}
                       </Heading>
@@ -157,7 +157,7 @@ export function NavBarDrawer({ isOpen, onClose }) {
               >
                 <Link to="/login">
                   <Button
-                    bg="#0056d2"
+                    bg="#333333"
                     color="white"
                     borderRadius="5px"
                     _hover={{ bg: "#003e9c" }}
@@ -167,7 +167,7 @@ export function NavBarDrawer({ isOpen, onClose }) {
                 </Link>
                 <Link to="/signup">
                   <Button
-                    bg="#0056d2"
+                    bg="#333333"
                     color="white"
                     borderRadius="5px"
                     _hover={{ bg: "#003e9c" }}

@@ -66,12 +66,12 @@ const Dropdown = () => {
         <Menu>
           <MenuButton
             as={Button}
-            bgColor={"#0056d2"}
+            bgColor={"#2F4F4F"}
             color={"white"}
             variant="outline"
             _hover={{
               bg: "white",
-              color: "#0056d2",
+              color: "#2F4F4F",
               border: "2px solid black",
               cursor: "pointer",
             }}
@@ -98,7 +98,7 @@ const Dropdown = () => {
                   userStore?.role === "teacher" ? (
                     <Flex alignItems={"center"}>
                       <Box>
-                        <FaUserShield size="2rem" color="#0056d2" />
+                        <FaUserShield size="2rem" color="#2F4F4F" />
                         <Text fontSize="0.6rem" fontWeight="bold">
                           {capitalizeFirstLetter(userStore?.role)}
                         </Text>
@@ -109,7 +109,7 @@ const Dropdown = () => {
                     </Flex>
                   ) : userStore?.role === "user" ? (
                     <Flex alignItems={"center"}>
-                      <BiUserCircle size="2rem" color="#0056d2" />
+                      <BiUserCircle size="2rem" color="#2F4F4F" />
                       <Heading size="sm" ml="1rem">
                         {capitalizeFirstLetter(userStore?.name)}
                       </Heading>

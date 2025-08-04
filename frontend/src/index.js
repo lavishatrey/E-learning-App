@@ -6,14 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom"
 import { Provider } from 'react-redux';
 import store from './Redux/Store';
-import { CSSReset, ChakraProvider } from '@chakra-ui/react';
+import { CSSReset, ChakraProvider,ColorModeScript  } from '@chakra-ui/react';
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import { Analytics } from "@vercel/analytics/react"
+import theme from './theme'; 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-<ChakraProvider>
+    <React.StrictMode>
+<ChakraProvider  theme={theme}>
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+
   <BrowserRouter>
   <CSSReset/>
     <App />
@@ -21,6 +25,8 @@ root.render(
     <SpeedInsights />
   </BrowserRouter>
 </ChakraProvider>
+    </React.StrictMode>
+
   </Provider>
 );
 

@@ -29,7 +29,7 @@ export const showToast = ({ toast, message, color }) => {
     duration: 3000,
     render: () => (
       <Box color="white" p={3} bg={color}>
-        {message || 'Something Went Wrong Please Refresh'}
+        {message || "Something Went Wrong Please Refresh"}
       </Box>
     ),
   });
@@ -125,8 +125,6 @@ const SignUp = () => {
     setForm({ ...form, isPromotion: !isChecked });
   };
 
-
-
   // SignUp function
   async function handleSignUp() {
     const { email, password, confirmPassword, name } = form;
@@ -147,15 +145,14 @@ const SignUp = () => {
       return;
     }
 
-     dispatch(signUpFetch(form)).then((res) => {
-    if(!userStore?.isError){
-      setForm({ email: "", password: "", confirmPassword: "", name: "" });
-      showToast({toast,message:'SignUp Successful',color:'green'});
-      navigate('/login')
-    }else{
-      showToast({toast,message:userStore?.isError,color:'red'});
-    }
-      
+    dispatch(signUpFetch(form)).then((res) => {
+      if (!userStore?.isError) {
+        setForm({ email: "", password: "", confirmPassword: "", name: "" });
+        showToast({ toast, message: "SignUp Successful", color: "green" });
+        navigate("/login");
+      } else {
+        showToast({ toast, message: userStore?.isError, color: "red" });
+      }
     });
   }
 
@@ -323,7 +320,7 @@ const SignUp = () => {
               <Button
                 w="100%"
                 color="white"
-                bg="#0056D2"
+                bg="#2F4F4F"
                 _hover={{ background: "#1E88E5", color: "#CFD8DC" }}
                 borderRadius="0"
                 textAlign="center"

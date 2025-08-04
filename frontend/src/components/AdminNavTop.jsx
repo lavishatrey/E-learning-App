@@ -12,16 +12,17 @@ const AdminNavTop = ({ handleSearch }) => {
 
   return (
     <Flex h="10vh" justifyContent={"space-between"} mt="15px">
-      <Flex w={"60%"}>
+      <Flex w={"70%"}> {/* Increased width for the search section */}
         <Link>
           <IoSearchCircleOutline
             style={{ fontSize: "7vh", color: "gray", marginTop: "3px" }}
           />
         </Link>
-        <Box w={"50%"}>
+        <Box w={"70%"}> {/* Increased width for the search input's container */}
           <Input
             placeholder="Search Anything"
-            border={"none"}
+            border="1px solid lightgray" // Added a subtle border
+            borderRadius="0" // Made it edgy (no border-radius)
             h={"8vh"}
             w="100%"
             onChange={handleSearch}

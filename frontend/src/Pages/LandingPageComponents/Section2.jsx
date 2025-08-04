@@ -18,7 +18,6 @@ const Section2 = () => {
       p={10}
       justifyContent={"center"}
       alignItems={"center"}
-    
     >
       <Text
         fontSize={{
@@ -28,7 +27,7 @@ const Section2 = () => {
         }}
       >
         We collaborate with{" "}
-        <Link color="#0056d2" href="#" fontWeight="bold">
+        <Link color="#333333" href="#" fontWeight="bold">
           300+ leading universities and companies
         </Link>
       </Text>

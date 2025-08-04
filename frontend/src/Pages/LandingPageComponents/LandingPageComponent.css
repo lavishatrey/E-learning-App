@@ -39,12 +39,12 @@
 
   .slick-prev:hover {
   
-    color: #0056d2;
+    color: #2F4F4F;
   }
   
   .slick-next:hover {
  
-    color: #0056d2;
+    color: #2F4F4F;
   }
 
 
@@ -52,12 +52,12 @@
     content: "🠸";
     font-weight: 900;
     font-size: 54px;
-    color:#0056d2 ;
+    color:#2F4F4F ;
   }
   .slick-next:before {
     content: "🠺";
     font-size: 54px;
     font-weight: 900;
-    color:#0056d2 ;
+    color:#2F4F4F ;
   }
   

@@ -2,7 +2,6 @@ import React from "react";
 import {
   Flex,
   Box,
-  Select,
   Input,
   Button,
   IconButton,
@@ -10,16 +9,49 @@ import {
   Text,
   Link,
   useDisclosure,
+  useColorMode,
+  useColorModeValue,
+  useToast, // <-- Import useToast hook
 } from "@chakra-ui/react";
 import { FaSearch, FaBars } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import { NavBarDrawer } from "../components/NavBarDrawer";
+import { SunIcon, MoonIcon } from "@chakra-ui/icons";
+import { useNavigate, useLocation } from "react-router-dom";
+import { NavBarDrawer } from "../components/NavBarDrawer"; // <-- Correct import (named export)
+
+// Assuming showToast is defined elsewhere, if not, you might need to import or define it.
+// const showToast = ({ toast, message, color }) => {
+//   toast({
+//     title: message,
+//     status: color,
+//     duration: 3000,
+//     isClosable: true,
+//   });
+// };
 
 const Navbar = () => {
   const isMobile = useBreakpointValue({ base: true, lg: false });
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { colorMode, toggleColorMode } = useColorMode();
+  const toast = useToast(); // <-- Initialize useToast
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const [showSearchBar, setShowSearchBar] = React.useState(false);
+
+  // --- All useColorModeValue calls UNCONDITIONALLY at the top ---
+  const navBg = useColorModeValue("#f5f5f5", "gray.800");
+  const textColor = useColorModeValue("#333333", "whiteAlpha.900");
+  const linkHoverColor = useColorModeValue("#003e9c", "#90CDF4");
+  const inputBg = useColorModeValue("white", "gray.700");
+  const inputPlaceholderColor = useColorModeValue("#555454", "gray.400");
+  const iconButtonBgHover = useColorModeValue("gray.200", "whiteAlpha.300");
+  const searchButtonHoverBg = useColorModeValue("#003e9c", "#555555");
+  const mobileSearchIconBg = useColorModeValue("#333333", "gray.600");
+  const primaryButtonBg = useColorModeValue("#333333", "blue.600");
+  const primaryButtonColor = useColorModeValue("white", "white");
+  const primaryButtonHoverBg = useColorModeValue("#003e9c", "blue.700");
+  const desktopSearchButtonHover = useColorModeValue("#0288D1", "blue.700");
 
   function signup() {
     navigate("/signup");
@@ -29,6 +61,18 @@ const Navbar = () => {
     navigate("/");
   }
 
+  function handleShowSearchBar() {
+    setShowSearchBar(!showSearchBar);
+    if (showSearchBar && location.pathname === "/home") {
+      toast({ // Direct Chakra UI toast call
+        title: `Below is your search Result`,
+        status: "success", // Changed color to status for Chakra toast
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+  }
+
   return (
     <Box>
       <Flex
@@ -36,7 +80,7 @@ const Navbar = () => {
         align="center"
         justify="space-between"
         p={4}
-        bg="#f5f5f5"
+        bg={navBg}
         boxShadow="0 4px 6px rgba(0, 0, 0, 0.1)"
         position="fixed"
         width="100%"
@@ -44,43 +88,40 @@ const Navbar = () => {
       >
         <Flex align="center">
           <Box>
-            {/* Logo */}
-            {/* <img src={image} alt="Logo" width="30%" /> */}
             <Text
               fontSize={30}
               fontWeight="extrabold"
-              color="#0056d2"
+              color={textColor}
               onClick={home}
               _hover={{ cursor: "pointer" }}
             >
-              LAVISH-LEARNS
+              LAVISH - LEARNS
             </Text>
           </Box>
         </Flex>
 
         {!isMobile ? (
-          <Flex>
-            <Box>
-              {/* Search Bar */}
-              <Input
-                type="text"
-                variant="filled"
-                border="1px solid black"
-                fontSize="0.7rem"
-                m="0 2rem"
-                color="black"
-                placeholder="What do you want to learn?"
-                borderRadius="10px 0 0px 10px"
-                _placeholder={{ color: "#555454", letterSpacing: "1px" }}
-              />
-            </Box>
+          <Flex width="40%">
+            <Input
+              type="text"
+              variant="filled"
+              border="1px solid black"
+              fontSize="0.9rem"
+              color={textColor}
+              placeholder="What do you want to learn?"
+              borderRadius="0px"
+              _placeholder={{ color: inputPlaceholderColor, letterSpacing: "1px" }}
+              flex="1"
+              mr="-1px"
+              bg={inputBg}
+            />
             <IconButton
               aria-label="Search"
               icon={<FaSearch />}
-              bg="#0056d2"
-              color="white"
-              borderRadius="0px 10px 10px 0px"
-              _hover={{ background: "#0288D1" }}
+              bg={primaryButtonBg}
+              color={primaryButtonColor}
+              borderRadius="0px"
+              _hover={{ background: desktopSearchButtonHover }}
             />
           </Flex>
         ) : (
@@ -89,7 +130,7 @@ const Navbar = () => {
               aria-label="Menu"
               icon={<FaBars />}
               bg="transparent"
-              color="#0056d2"
+              color={textColor}
               onClick={onOpen}
               fontSize="2xl"
               mr={2}
@@ -97,49 +138,104 @@ const Navbar = () => {
           </Flex>
         )}
 
-        {isMobile && (
+        {/* Mobile search icon (always visible on mobile unless search bar is active) */}
+        {isMobile && !showSearchBar && location.pathname === "/home" && (
           <IconButton
             aria-label="Search"
             icon={<FaSearch />}
-            color="black"
+            color={textColor}
             borderRadius="7px"
-            _hover={{ backgroundColor: "#003e9c", color: "white" }}
+            bg={mobileSearchIconBg}
+            _hover={{ backgroundColor: searchButtonHoverBg, color: "white" }}
+            onClick={handleShowSearchBar}
           />
         )}
 
+        {/* Mobile search bar (conditionally rendered when showSearchBar is true) */}
+        {isMobile && showSearchBar && location.pathname === "/home" && (
+          <Flex align="center" width="70vw">
+            <Input
+              type="text"
+              variant="filled"
+              border="1px solid black"
+              fontSize="1rem"
+              color={textColor}
+              placeholder="Find your new Skill!"
+              borderRadius="0px"
+              _placeholder={{
+                color: inputPlaceholderColor,
+                letterSpacing: "0.5px",
+              }}
+              flex="1"
+              mr="-1px"
+              bg={inputBg}
+            />
+            <IconButton
+              aria-label="Search"
+              icon={<FaSearch />}
+              bg={primaryButtonBg}
+              color={primaryButtonColor}
+              borderRadius="0px"
+              _hover={{ bg: searchButtonHoverBg }}
+              onClick={handleShowSearchBar}
+            />
+          </Flex>
+        )}
+
+        {/* Right side navigation for desktop */}
         {!isMobile && (
-          <Flex align="center">
-            {/* Links */}
-            <Box mr={4}>
+          <Flex align="center" gap={5}> {/* Use gap for consistent spacing */}
+            {/* Theme Toggle Button */}
+            <IconButton
+              aria-label="Toggle color mode"
+              icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+              onClick={toggleColorMode}
+              variant="ghost"
+              color={textColor}
+              _hover={{ bg: iconButtonBgHover }}
+            />
+
+            {/* Links (ensure they have content or remove if not needed) */}
+            <Box>
               <Link
-                _hover={{ color: "#003e9c", textDecoration: "underline" }}
+                _hover={{ color: linkHoverColor, textDecoration: "underline" }}
                 href="#"
-              ></Link>
+                color={textColor}
+              >
+                Categories
+              </Link>
             </Box>
-            <Box mr={4}>
+            <Box>
               <Link
-                _hover={{ color: "#003e9c", textDecoration: "underline" }}
+                _hover={{ color: linkHoverColor, textDecoration: "underline" }}
                 href="#"
-              ></Link>
+                color={textColor}
+              >
+                For Business
+              </Link>
             </Box>
-            <Box mr={4}>
+            <Box>
+              {/* Corrected placement of href and color attributes */}
               <Link
-                _hover={{ color: "#003e9c", textDecoration: "underline" }}
-                href="#"
-              ></Link>
+                href="/Teachme"
+                color={textColor}
+                _hover={{ color: linkHoverColor, textDecoration: "underline" }}
+              >
+                Teach
+              </Link>
             </Box>
-            <Box mr={4}>
-              <Link textDecoration="none" color="#0056d2" href="/login">
+            <Box>
+              <Link textDecoration="none" color={textColor} href="/login">
                 Login
               </Link>
             </Box>
 
             {/* Join for Free Button */}
             <Button
-              bg="#0056d2"
-              color="white"
+              bg={primaryButtonBg}
+              color={primaryButtonColor}
               borderRadius="5px"
-              _hover={{ bg: "#003e9c" }}
+              _hover={{ bg: primaryButtonHoverBg }}
               onClick={signup}
             >
               Join for free

@@ -66,40 +66,35 @@ const Login = () => {
     }
   }
 
-
-
   // login function
   function handleLogin() {
     dispatch(loginFetch(form)).then((res) => {
-   const user = JSON.parse(localStorage.getItem('user'))
-      if(user?.message){
-        showToast({toast,message:'Login Successful',color:'green'})
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user?.message) {
+        showToast({ toast, message: "Login Successful", color: "green" });
         setForm({ email: "", password: "" });
-      }else{
-        showToast({toast,message:userStore?.isError,color:'red'})
+      } else {
+        showToast({ toast, message: userStore?.isError, color: "red" });
       }
-      
     });
   }
 
-
-  useEffect(()=>{
+  useEffect(() => {
     // if isAuth is true move to dashboard;
 
-  if (userStore.isAuth) {
-    if(userStore?.role==='user'){
-      navigate("/home");
-    }else if(userStore?.role === "admin"){
-      navigate("/admin/dashboard");
+    if (userStore.isAuth) {
+      if (userStore?.role === "user") {
+        navigate("/home");
+      } else if (userStore?.role === "admin") {
+        navigate("/admin/dashboard");
+      } else if (userStore?.role === "teacher") {
+        navigate("/TeacherDashboard");
+      }
     }
-    else if(userStore?.role==='teacher'){
-      navigate("/TeacherDashboard");
-    }
-  }
-  },[userStore?.isAuth,userStore?.role])
+  }, [userStore?.isAuth, userStore?.role]);
 
   return (
-    <Box pb='2rem'>
+    <Box pb="2rem">
       <Box>
         <Navbar />
       </Box>
@@ -111,7 +106,7 @@ const Login = () => {
         ref={backgroundRef}
       >
         <Box w={{ base: "90%", sm: "80%", md: "40%", lg: "30%" }}>
-          <Box mt='15px'>
+          <Box mt="15px">
             <Heading size="md">Log in to your elearning Account</Heading>
           </Box>
           {/* 2nd box  */}
@@ -172,16 +167,20 @@ const Login = () => {
                 />
               </Box>
             </Box>
-            <Box display='flex' m='1rem 0' fontSize='0.7rem'>
-              <Text >You don't have Account with us?</Text>
-              <Link to='/signup'><Text _hover={{}} fontWeight='500' ml='0.5rem' color='black'>SignUp</Text></Link>
+            <Box display="flex" m="1rem 0" fontSize="0.7rem">
+              <Text>You don't have Account with us?</Text>
+              <Link to="/signup">
+                <Text _hover={{}} fontWeight="500" ml="0.5rem" color="black">
+                  SignUp
+                </Text>
+              </Link>
             </Box>
             {/* button  */}
             <Box mt="15px">
               <Button
                 w="100%"
                 color="white"
-                bg="#0056D2"
+                bg="#2F4F4F"
                 _hover={{ background: "#1E88E5", color: "#CFD8DC" }}
                 borderRadius="0"
                 textAlign="center"

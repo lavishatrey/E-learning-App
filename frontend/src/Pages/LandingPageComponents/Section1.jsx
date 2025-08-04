@@ -25,7 +25,7 @@ const Section1 = () => {
           fontWeight="bold"
           fontFamily="poppins"
         >
-          Learn without limits
+          Grow. Learn. Succeed.
         </Text>
         <Text
           fontSize={{
@@ -36,13 +36,10 @@ const Section1 = () => {
           }}
           fontWeight="semibold"
         >
-          <Text fontSize="2rem" color="#0056d2" display="inline">
-            LAVISH-LEARNS
+          <Text fontSize="2rem" color="#333333" display="inline">
+            LAVISH - LEARNS
           </Text>{" "}
-          Where Educators and Students Connect Seamlessly Online. Teachers craft
-          personalized courses for various subjects and grades, while students
-          explore and purchase courses tailored to their needs. Empowering both
-          educators and learners, LAVISH-LEARNS revolutionizes online education.
+         A dynamic online hub where educators and students unite effortlessly. Teachers are equipped with intuitive tools to design and deliver personalized courses spanning a vast array of subjects and academic stages. For students, it's a world of tailored learning, allowing them to explore and acquire courses that perfectly align with their goals and interests. LAVISH - LEARNS empowers both the imparting and the acquiring of knowledge, creating a truly transformative educational experience that redefines what's possible in online learning.
         </Text>
         <Flex
           gap={30}
@@ -54,7 +51,7 @@ const Section1 = () => {
           }}
         >
           <Button
-            bg="#0056d2"
+            bg="#333333"
             color="white"
             size="lg"
             p={{
@@ -62,15 +59,15 @@ const Section1 = () => {
               md: "25px 50px",
               sm: "20px 40px",
             }}
-            border="3px solid #0056d2"
+            border="3px solid #333333"
             _hover={{ background: "#42A5F5", color: "#0D47A1" }}
             onClick={() => navigate("/signup")}
           >
             Join for Free
           </Button>
           <Button
-            colorScheme="#0056d2"
-            color="#0056d2"
+            colorScheme="#333333"
+            color="#333333"
             variant="outline"
             size="lg"
             p={{
@@ -78,10 +75,10 @@ const Section1 = () => {
               md: "25px 50px",
               sm: "20px 40px",
             }}
-            border="3px solid #0056d2"
+            border="3px solid #333333"
             onClick={() => navigate("/login")}
           >
-            Try LAVISH-LEARNS for Business
+            Try LAVISH - LEARNS for Business
           </Button>
         </Flex>
       </Flex>

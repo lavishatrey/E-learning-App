@@ -1,5 +1,5 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   Box,
@@ -11,25 +11,22 @@ import {
   Button,
   UnorderedList,
   ListItem,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 import { useNavigate } from "react-router-dom";
-import { changeRole } from '../../Redux/TeacherReducer/action';
-
+import { changeRole } from "../../Redux/TeacherReducer/action";
 
 const TeachVerify = () => {
-    
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const user = JSON.parse(localStorage.getItem('user'))
-//   console.log(user);
+  const user = JSON.parse(localStorage.getItem("user"));
+  //   console.log(user);
 
   function teacher() {
-    dispatch(changeRole('teacher',user.userId));
+    dispatch(changeRole("teacher", user.userId));
     navigate("/TeacherDashboard");
   }
-  
 
   return (
     <Box p={4}>
@@ -59,20 +56,20 @@ const TeachVerify = () => {
         </UnorderedList>
         <FormControl>
           <FormLabel>
-            <Checkbox colorScheme="blue" defaultChecked /> Yes, I have read
-            all the terms and conditions. I accept the agreement.
+            <Checkbox colorScheme="blue" defaultChecked /> Yes, I have read all
+            the terms and conditions. I accept the agreement.
           </FormLabel>
         </FormControl>
         <Box textAlign="center" mt={4}>
-        <Button
-              bg="#0056d2"
-              color="white"
-              borderRadius="5px"
-              _hover={{ bg: "#003e9c" }}
-              onClick={teacher}
-            >
-              Submit
-            </Button>
+          <Button
+            bg="#2F4F4F"
+            color="white"
+            borderRadius="5px"
+            _hover={{ bg: "#003e9c" }}
+            onClick={teacher}
+          >
+            Submit
+          </Button>
         </Box>
       </Box>
     </Box>
