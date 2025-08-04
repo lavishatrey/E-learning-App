@@ -66,8 +66,8 @@ const Courses = () => {
   return (
     <Grid className="Nav" h={"99vh"} w="94%" gap={10}>
       {/* <AdminSidebar/>  */}
-      <Box mt='90px'>
-          <AdminNavTop handleSearch={handleSearch} />
+      <Box mt="90px">
+        <AdminNavTop handleSearch={handleSearch} />
         {/*  */}
         <Box className={`course ${courseSize}`}>
           <Grid
@@ -83,8 +83,24 @@ const Courses = () => {
               <option value="asc">Price Sort in Ascending Order</option>
               <option value="desc">Price Sort in Descending Order</option>
             </Select>
-            <Box fontWeight={"bold"}>
-              <Link to="/admin/addCourse">Create</Link>
+            <Box
+              fontWeight={"bold"}
+              ml={{ xl: "auto", lg: "auto", base: 0 }}
+              textAlign={{ xl: "right", lg: "right", base: "left" }}
+            >
+              <Link to="/admin/addCourse">
+                <Button
+                  colorScheme="green"
+                  size="md"
+                  px={6}
+                  py={2}
+                  borderRadius="md"
+                  boxShadow="md"
+                  fontWeight="bold"
+                >
+                  + Create Course
+                </Button>
+              </Link>
             </Box>
           </Grid>
           <Box
@@ -118,22 +134,50 @@ const Courses = () => {
                         <Td>{el.description}</Td>
                         <Td>{el.price}</Td>
                         <Td>{el.teacher}</Td>
-                        <Box>
-                          <Button
-                            onClick={() => handleDelete(el._id, el.title)}
-                          >
-                            Delete
-                          </Button>
-                          <Link to={`/admin/edit/${el._id}`}>
-                            <ButtonGroup size="sm" isAttached variant="outline">
-                              <Button>Edit</Button>
-                              <IconButton
-                                aria-label="Add to friends"
-                                icon={<EditIcon />}
-                              />
-                            </ButtonGroup>
-                          </Link>
-                        </Box>
+                        <Td colSpan={2} style={{ textAlign: "center" }}>
+                          <Flex justify="center" align="center" gap={4}>
+                            <Button
+                              colorScheme="red"
+                              size="md"
+                              px={6}
+                              py={2}
+                              borderRadius="md"
+                              fontWeight="bold"
+                              boxShadow="md"
+                              onClick={() => handleDelete(el._id, el.title)}
+                            >
+                              Delete
+                            </Button>
+                            <Link
+                              to={`/admin/edit/${el._id}`}
+                              style={{ textDecoration: "none" }}
+                            >
+                              <ButtonGroup
+                                size="md"
+                                isAttached
+                                variant="outline"
+                              >
+                                <Button
+                                  colorScheme="blue"
+                                  px={6}
+                                  py={2}
+                                  borderRadius="md"
+                                  fontWeight="bold"
+                                  boxShadow="md"
+                                >
+                                  Edit
+                                </Button>
+                                <IconButton
+                                  aria-label="Edit course"
+                                  icon={<EditIcon />}
+                                  colorScheme="blue"
+                                  borderRadius="md"
+                                  boxShadow="md"
+                                />
+                              </ButtonGroup>
+                            </Link>
+                          </Flex>
+                        </Td>
                       </Tr>
                     </Tbody>
                   );
