@@ -55,7 +55,11 @@ export function NavBarDrawer({ isOpen, onClose }) {
       Authorization: `Bearer ${token}`,
     };
     axios
-      .post("http://localhost:3005/users/logout", {}, { headers })
+      .post(
+        "https://e-learning-app-4.onrender.com/users/logout",
+        {},
+        { headers }
+      )
       .then((res) => {
         localStorage.setItem(
           "user",

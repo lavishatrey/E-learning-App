@@ -51,7 +51,7 @@ const ProfilePage = () => {
     const id = userStore?.userId;
 
     axios
-      .patch(`http://localhost:3005/users/update/${id}`, obj)
+      .patch(`https://e-learning-app-4.onrender.com/users/update/${id}`, obj)
       .then((res) => {
         dispatch(actionLoginSuccess(res?.data));
         localStorage.setItem(

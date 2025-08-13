@@ -55,7 +55,7 @@ const InProgressCarousel = () => {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     // console.log(token.userId);
-    const url = `http://localhost:3005/users/userCourse/${user.userId}`;
+    const url = `https://e-learning-app-4.onrender.com/users/userCourse/${user.userId}`;
 
     axios
       .get(url)

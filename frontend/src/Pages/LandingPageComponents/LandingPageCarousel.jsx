@@ -51,7 +51,7 @@ const LandingPageCarousel = () => {
   };
 
   useEffect(() => {
-    const url = "http://localhost:3005/courses/all";
+    const url = "https://e-learning-app-4.onrender.com/courses/all";
     setLoading(true);
 
     fetch(url)

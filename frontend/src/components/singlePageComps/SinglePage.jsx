@@ -43,7 +43,7 @@ export default function SinglePage() {
 
   // /courses/:courseID
 
-  let vdo_url = `http://localhost:3005/videos/courseVideos/${id}`;
+  let vdo_url = `https://e-learning-app-4.onrender.com/videos/courseVideos/${id}`;
 
   console.log(vdo_url);
 
