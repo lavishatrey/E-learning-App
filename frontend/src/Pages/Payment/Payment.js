@@ -21,7 +21,9 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { capitalizeFirstLetter } from "../../Redux/UserReducer/action";
 import { useParams } from "react-router";
-import { Input, keyframes, useToast } from "@chakra-ui/react";
+import { Input, useToast } from "@chakra-ui/react";
+import { keyframes } from "@emotion/react";
+
 import { showToast } from "../../components/SignUp";
 
 export default function Payment({ isOpen, onOpen, onClose }) {
