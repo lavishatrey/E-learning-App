@@ -5,6 +5,11 @@
   "dependencies": {
     "@chakra-ui/icons": "^2.0.19",
     "@chakra-ui/react": "^2.7.0",
+    "@chakra-ui/button": "3.24.2",
+    "@chakra-ui/layout": "3.24.2",
+    "@chakra-ui/modal": "3.24.2",
+    "@chakra-ui/radio": "3.24.2",
+    "@chakra-ui/hooks": "3.24.2",
     "@react-oauth/google": "^0.11.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
