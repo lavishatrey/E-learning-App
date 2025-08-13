@@ -9,7 +9,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-} from "@chakra-ui/modal";
+} from "@chakra-ui/react";
 import DynamicSelect from "./DynamicSelect";
 import { Radio } from "@chakra-ui/react";
 import { BsFillCreditCardFill } from "react-icons/bs";
