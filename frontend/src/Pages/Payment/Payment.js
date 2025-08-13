@@ -1,5 +1,5 @@
 import { Button } from "@chakra-ui/button";
-import { useDisclosure } from "@chakra-ui/hooks";
+import { useDisclosure } from "@chakra-ui/react";
 import { Box, Flex, Heading, Text } from "@chakra-ui/layout";
 import {
   Modal,
@@ -11,7 +11,7 @@ import {
   ModalOverlay,
 } from "@chakra-ui/modal";
 import DynamicSelect from "./DynamicSelect";
-import { Radio } from "@chakra-ui/radio";
+import { Radio } from "@chakra-ui/react";
 import { BsFillCreditCardFill } from "react-icons/bs";
 import { RiVisaFill } from "react-icons/ri";
 import { FaCcMastercard, FaWallet } from "react-icons/fa";
